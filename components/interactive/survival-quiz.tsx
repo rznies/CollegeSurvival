@@ -53,6 +53,26 @@ const quizQuestions: Question[] = [
       { id: "3c", text: "Cry in bathroom", personalityType: "victim" },
       { id: "3d", text: "Use mobile hotspot, bill parents", personalityType: "hustler" }
     ]
+  },
+  {
+    id: 4,
+    text: "How do you handle a 9 AM lecture?",
+    options: [
+      { id: "4a", text: "Sleep through it, regret later", personalityType: "victim" },
+      { id: "4b", text: "Bribe a friend for notes", personalityType: "hustler" },
+      { id: "4c", text: "Set 15 alarms, still late", personalityType: "anxiety-king" },
+      { id: "4d", text: "Show up and terrorize everyone with your morning energy", personalityType: "hostel-demon" }
+    ]
+  },
+  {
+    id: 5,
+    text: "Your crush sits next to you in the library. You:",
+    options: [
+      { id: "5a", text: "Pretend to read while stealing glances", personalityType: "victim" },
+      { id: "5b", text: "'Accidentally' drop your notes near them", personalityType: "hustler" },
+      { id: "5c", text: "Overthink every movement you make", personalityType: "anxiety-king" },
+      { id: "5d", text: "Start a library rave to impress them", personalityType: "hostel-demon" }
+    ]
   }
 ];
 
@@ -163,10 +183,23 @@ export function SurvivalQuiz() {
               variant="default"
               className="w-full"
               onClick={() => {
-                alert("Sharing functionality would be implemented here");
+                const text = `I'm a ${result?.title} at college! ${result?.description} Take the quiz at College Survivor to find your type! 🎓✨`;
+                const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
               }}
             >
               Share on WhatsApp
+            </Button>
+            <Button
+              variant="default"
+              className="w-full"
+              onClick={() => {
+                const text = `I'm a ${result?.title} at college! Take the quiz to find your type! 🎓✨`;
+                const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
+              }}
+            >
+              Share on Twitter
             </Button>
             <Button
               variant="outline"
@@ -184,4 +217,4 @@ export function SurvivalQuiz() {
       </CardFooter>
     </Card>
   );
-} 
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Fuse from 'fuse.js';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -81,12 +82,16 @@ export function CampusMarketplace() {
     images: ''
   });
 
-  const filteredListings = mockListings.filter(listing => {
-    const matchesSearch = listing.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         listing.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = !selectedCategory || listing.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+  const fuse = new Fuse(mockListings, {
+    keys: ['title', 'description'],
+    includeScore: true,
+    threshold: 0.3,
+    ignoreLocation: true
   });
+
+  const filteredListings = searchQuery 
+    ? fuse.search(searchQuery).map((result) => result.item) 
+    : mockListings.filter((listing: Listing) => !selectedCategory || listing.category === selectedCategory);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -324,4 +329,4 @@ export function CampusMarketplace() {
       </div>
     </div>
   );
-} 
+}

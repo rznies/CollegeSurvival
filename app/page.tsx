@@ -1,12 +1,14 @@
 import { Hero } from "@/components/home/hero";
-import { FeaturedTeasers } from "@/components/home/featured-teasers";
+import { FeaturedCarousel } from "@/components/home/featured-carousel";
+import { GettingStarted } from "@/components/home/getting-started";
 import { SurvivalQuiz } from "@/components/interactive/survival-quiz";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <FeaturedTeasers />
+      <FeaturedCarousel />
+      <GettingStarted />
       <section className="py-16 bg-background">
         <div className="container max-w-5xl">
           <div className="text-center mb-10">
@@ -23,4 +25,4 @@ export default function Home() {
       </section>
     </>
   );
-} 
+}

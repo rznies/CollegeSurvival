@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
 
 /* Custom animations */
 @keyframes float {
@@ -42,23 +42,23 @@
 
 @layer base {
   :root {
-    --background: 231 15% 5%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 10%; /* #1A1A1A deep charcoal */
+    --foreground: 0 0% 88%; /* #E0E0E0 soft gray for better readability */
     
-    --card: 229 20% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 229 20% 12%;
+    --card-foreground: 0 0% 88%;
     
-    --primary: 160 100% 60%; /* Neon teal */
-    --primary-foreground: 230 20% 10%;
+    --primary: 156 100% 50%; /* #00FF99 neon green */
+    --primary-foreground: 0 0% 10%;
     
-    --secondary: 280 100% 65%; /* Vibrant purple */
-    --secondary-foreground: 230 20% 10%;
+    --secondary: 265 100% 75%; /* #BB86FC vibrant purple */
+    --secondary-foreground: 0 0% 10%;
     
     --muted: 229 20% 15%;
-    --muted-foreground: 210 40% 80%;
+    --muted-foreground: 0 0% 69%; /* #B0B0B0 lighter gray */
     
-    --accent: 330 100% 65%; /* Hot pink accent */
-    --accent-foreground: 210 40% 98%;
+    --accent: 180 100% 45%; /* #03DAC6 electric blue */
+    --accent-foreground: 0 0% 88%;
     
     --border: 229 20% 20%;
     --radius: 0.75rem;
@@ -71,21 +71,39 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
   }
   
   /* Modern typography system */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
     letter-spacing: -0.02em;
+    @apply text-primary;
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
   
   /* Title font styling */
   .title-font {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     letter-spacing: -0.03em;
     font-weight: 700;
+    font-size: 60px;
   }
   
   /* Unhinged styling but more subtle */
@@ -154,6 +172,10 @@
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+    mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
     pointer-events: none;
   }
   
@@ -190,4 +212,4 @@
   .stagger-item-3 { animation-delay: 200ms; }
   .stagger-item-4 { animation-delay: 300ms; }
   .stagger-item-5 { animation-delay: 400ms; }
-} 
+}
